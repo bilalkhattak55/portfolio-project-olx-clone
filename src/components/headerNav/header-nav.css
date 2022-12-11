@@ -1,0 +1,19 @@
+.header-nav {
+   margin-left: 60px;
+  
+}
+.header-nav-sm {
+   background-color: transparent;
+}
+.col li {
+   display: inline-block;
+}
+.dropdown-menu {
+   width: 800px;
+}
+.navbar a{
+   font-size: 15PX;
+}
+form .price {
+   width: 100%;
+}

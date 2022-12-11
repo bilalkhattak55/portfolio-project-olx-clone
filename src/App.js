@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+
+// import './App.css';
+import Header from './components/header/Header';
+import Footer from './components/footer/Footer';
+import Carousel from './components/carousel/Carousel';
+import Card from './components/card/Card';
+import Advert from './components/advertisement/Advert';
+import Form from './components/form/Form';
+import { useState } from 'react';
+import AddDetails from './components/addDetails/AddDetails';
+import {Routes, Route} from "react-router-dom";
+import Home from './pages/Home';
 
 function App() {
+const [show,setshow]=useState(false)
+
+function handleClicked (){
+setshow(true)
+}
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Routes>
+      <Route exact path='/' element={<Home/>} />
+    </Routes>
+    {show ? <Form /> : <> <Header handleClicked={handleClicked}  />
+    <Carousel />
+    <Card />
+    <Advert />
+      <Footer /></> }
+
+      
+      <AddDetails />
+
+    
+    </>
   );
 }
 

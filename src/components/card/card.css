@@ -1,0 +1,18 @@
+
+.card {
+ margin: 20px 30px;
+ text-align: left;
+ 
+}
+.container {
+    place-content: center;
+}
+
+
+
+/* @media only screen and (max-width: 768px) {
+    .card {
+      justify-content: center;
+      width: 100%;
+    }
+  } */
