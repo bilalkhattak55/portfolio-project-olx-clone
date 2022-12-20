@@ -45,7 +45,7 @@ useEffect(()=>{
         <div className="image_discription">
           <div className="swiper">
             <div className="swiper-wrapper">
-              <div className="swiper-slide"> <img src={data.image} alt='img' /> </div>
+              <div className="swiper-slide"> <img src={proOne} alt='img' /> </div>
 
             </div>
             <div className="swiper-pagination" />
