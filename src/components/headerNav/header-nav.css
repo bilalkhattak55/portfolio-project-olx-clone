@@ -1,19 +1,22 @@
-.header-nav {
-   margin-left: 60px;
-  
-}
+
 .header-nav-sm {
-   background-color: transparent;
+   background-color: #fff;
 }
 .col li {
    display: inline-block;
 }
 .dropdown-menu {
    width: 800px;
+   z-index: 2;
 }
 .navbar a{
    font-size: 15PX;
 }
-form .price {
-   width: 100%;
+.header-nav {
+   z-index: 2;
+   background-color: #fff;
+}
+.navbar {
+   background-color: #fff;
+   z-index: 2;
 }

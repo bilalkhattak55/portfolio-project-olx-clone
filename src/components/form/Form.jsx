@@ -1,23 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import olxLogo from "../../images/olx_logo.png";
 import "../form/form.css";
 import avatartImage from "../../images/avatar-img.png";
-import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+import { Link } from 'react-router-dom';
+import { addPost } from '../../helpers/helpers';
+// import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+// import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 function Form() {
+    const [inputs, setInputs] = useState({ title: "", description: "", brand: "", price: "",imageUrl:"", location:"", name:"",  });
+
+    const handleChange = (e) => {
+        setInputs((prevState) => ({
+           ...prevState,
+           [e.target.name] : e.target.value
+        }))
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(inputs);
+
+        addPost(inputs).then((res)=> console.log(res).catch((err)=> console.log(err)))
+    }
     return (
         <div>
-            <nav class="navbar bg-light">
-                <div class="container-fluid">
-                    <span class="navbar-brand mb-0 h1 ms-4">
-                        <img width="40px" src={olxLogo} alt="olx-logo" />
+            <nav className="navbar bg-light">
+                <div className="container-fluid">
+                    <span className="navbar-brand mb-0 h1 ms-1">
+                        <Link to="/"> <ion-icon name="arrow-back-outline"></ion-icon> </Link>
+                        <img className='ps-2 pb-3' width="40px" src={olxLogo} alt="olx-logo" />
                     </span>
                 </div>
             </nav>
 
             <div className="container form-container">
                 <h2 className='text-center pt-5' >Post your Data</h2>
-                <form className='rounded olx-form'>
+                <form onSubmit={handleSubmit} className='rounded olx-form'>
 
                     <fieldset className='fieldset'>
 
@@ -29,51 +48,55 @@ function Form() {
                         <hr />
                         <div className="px-4 py-3">
                             <h2 className=''>Include Some Details</h2>
-                            <label className='' for="title" >Add title</label>
-                            <input className='input-title mb-3 same-styling' type="text" name="" id="title" />
-                            <label for="description">Description</label>
-                            <textarea className='text-area rounded' name="" id="escription" cols="30" rows="3" />
+                            <label className='' htmlFor="title" >Add title</label>
+                            <input className='input-title mb-3 same-styling' type="text" onChange={handleChange} value={inputs.title} name="title" id="title" />
+                            <label htmlFor="description">Description</label>
+                            <textarea className='text-area rounded' onChange={handleChange} value={inputs.description} name="description" id="escription" cols="30" rows="3" />
 
-                            <p className="mb-0">Brand</p>
-                            <select className="form-select" aria-label="Default select example">
+
+                            <label className='' htmlFor="brand" >Brand</label>
+                            <input className='input-title mb-3 same-styling' type="text" onChange={handleChange} value={inputs.brand} name="brand" id="brand" />
+                            {/* <select className="form-select" aria-label="Default select example">
                                 <option selected>Open this select menu</option>
                                 <option value={1}>Smasung</option>
                                 <option value={2}>Apple</option>
                                 <option value={3}>vivo</option>
-                            </select>
+                            </select> */}
                         </div>
                         <hr />
                         <div className="px-4 py-3">
-                            <label for="price">Price</label>
-                            <input className='price same-styling' type="number" name="" id="price" />
+                            <label htmlFor="price">Price: </label>
+                            <input className='pricee same-styling' type="number" onChange={handleChange} value={inputs.price} name="price" id="price" />
 
                             <div className="uploadPhotoes my-3">
                                 <h2 className='mt-2'>Upload your Pictures</h2>
-                                <div className="row d-flex">
-                                    <div className="col-12 col-md-4 upload-photo d-flex flex-column text-center p-4">
-                                        <label for="file-input-1"><ion-icon name="camera-outline"></ion-icon></label>
-                                        <input type="file" id='file-input-1' />
-                                    </div>
-                                    <div className="col-12 col-md-4 upload-photo d-flex flex-column text-center p-4">
-                                        <label for="file-input-2"><ion-icon name="camera-outline"></ion-icon></label>
+
+                                <div className="col-12 col-md-4 upload-photo d-flex flex-column text-center p-4">
+                                    <label htmlFor="imageUrl"><ion-icon name="camera-outline"></ion-icon></label>
+                                    <span>Image Url: </span><input type="text" id='imageUrl'  onChange={handleChange} value={inputs.imageUrl} name="imageUrl" />
+                                </div>
+                                {/* <div className="col-12 col-md-4 upload-photo d-flex flex-column text-center p-4">
+                                        <label htmlFor="file-input-2"><ion-icon name="camera-outline"></ion-icon></label>
                                         <input type="file" name="" id="file-input-2" />
                                     </div>
                                     <div className="col-12 col-md-4 upload-photo d-flex flex-column text-center p-4">
-                                        <label for="file-input-3"><ion-icon name="camera-outline"></ion-icon></label>
+                                        <label htmlFor="file-input-3"><ion-icon name="camera-outline"></ion-icon></label>
                                         <input type="file" name="" id="file-input-3" />
-                                    </div>
-                                </div>
+                                    </div> */}
+
                             </div>
 
-                            <div className="location mb-4">
-                                <h2>your Add location</h2>
-                                <select className="form-select" aria-label="Default select example">
+                            
+                                <label className='' htmlFor="location" >Enter Your Location:</label>
+                                <input className='input-title mb-3 same-styling' type="text" onChange={handleChange} value={inputs.location} name="location" id="location" />
+                                {/* <select className="form-select" aria-label="Default select example">
                                     <option selected>Open this select menu</option>
                                     <option value={1}>One</option>
                                     <option value={2}>Two</option>
                                     <option value={3}>Three</option>
-                                </select>
-                            </div>
+                                </select> */}
+
+                            
 
                             <hr />
 
@@ -81,8 +104,8 @@ function Form() {
                                 <h2>REVIEW YOUR DETAILS</h2>
                                 <div className="avatar">
                                     <img width="100px" src={avatartImage} alt="avatar-image" />
-                                    <label className='ms-3' htmlFor="name">Name :</label>
-                                    <input className='same-styling' type="name" id='name' />
+                                    <label className='ms-3' htmlFor="name">Name : </label>
+                                    <input className='same-styling ms-1' type="name"  onChange={handleChange} value={inputs.name} name="name" id='name' />
                                 </div>
                                 <p>your phone number</p>
                             </div>
@@ -95,7 +118,7 @@ function Form() {
                             </div>
                         </div>
 
-                        <hr className='mb-0'/>
+                        <hr className='mb-0' />
 
 
                         <button type="submit" className="submit-btn">Post Now</button>

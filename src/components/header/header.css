@@ -131,6 +131,8 @@ form.example input[type=text] {
     font-size: 19px;
     background-color: #F8F9FA;
     text-decoration: underline;
+    margin-left: -12px;
+    margin-right: 10px;
   }
   .loginbtn:hover{
     text-decoration: none;

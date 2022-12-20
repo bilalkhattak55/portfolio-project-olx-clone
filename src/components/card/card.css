@@ -1,12 +1,28 @@
 
 .card {
- margin: 20px 30px;
+ margin: 20px 10px;
  text-align: left;
+ width: 19rem;
+ height: auto;
  
 }
-.container {
-    place-content: center;
+.card img {
+ 
+
+  object-fit: cover;
+
 }
+.container{
+    width: 90vw;
+    display: flex;
+    flex-wrap: wrap;
+}
+.card-title {
+  color: black;
+}
+
+
+
 
 
 
