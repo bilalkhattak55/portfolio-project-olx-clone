@@ -1,5 +1,6 @@
 import React from 'react';
 import "../headerNav/header-nav.css";
+import { Link } from 'react-router-dom';
 
 
 
@@ -22,7 +23,7 @@ function HeaderNav() {
                   <div className='row d-flex'>
                     <div className='col-12 col-md-3'>
                       <li><a className="dropdown-item mb-2" href="#"> <b>Action</b> </a></li>
-                      <li><a className="dropdown-item" href="#">Another action</a></li>
+                      <li><Link className="dropdown-item" to="/categories-jewellary">Jewellary</Link></li>
                       <li><a className="dropdown-item" href="#">Something else here</a></li>
                       <li><a className="dropdown-item" href="#">Action</a></li>
                       <li><a className="dropdown-item" href="#">Another action</a></li>
@@ -71,7 +72,7 @@ function HeaderNav() {
 
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Mobile Phones</a>
+                <Link className="nav-link" to="/categories-jewellary">Jewellary</Link>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#">Cars</a>

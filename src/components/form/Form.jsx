@@ -26,10 +26,10 @@ function Form() {
     return (
         <div>
             <nav className="navbar bg-light">
-                <div className="container-fluid">
+                <div className="container-fluid form-nav">
                     <span className="navbar-brand mb-0 h1 ms-1">
                         <Link to="/"> <ion-icon name="arrow-back-outline"></ion-icon> </Link>
-                        <img className='ps-2 pb-3' width="40px" src={olxLogo} alt="olx-logo" />
+                        <img className='ps-2 pb-4 form-nav-olxlogo' width="40px" src={olxLogo} alt="olx-logo" />
                     </span>
                 </div>
             </nav>

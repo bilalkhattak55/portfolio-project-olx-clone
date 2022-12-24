@@ -1,24 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import "../card/card.css";
-import cardImage from "../../images/card-1.jfif"
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import Loading from '../Loading';
 // import { color } from '@mui/system';
 // import { getAllPosts } from '../../helpers/helpers';
 // import AddDetails from '../addDetails/AddDetails';
 // import { height } from '@mui/system';
 
-const Card = ({ getindex }) => {
-    // const [showDetails, setShowDetails] = useState(false)
-    const [posts, setPosts] = useState([])
-    
-    useEffect(() => {
-        axios.get('https://fakestoreapi.com/products').then((response) => {
-          setPosts(response.data);
-        }).catch((err)=> console.log(err))
-        
-      }, []);
+const Card = () => {
+    const [loading, setLoading] = useState(true)
+    const startingVallue = 8;
+    const [card, setCards] = useState(startingVallue);
 
+    const LoadMore = () => {
+        setCards(card + startingVallue)
+    }
+
+    const [posts, setPosts] = useState([])
+
+    useEffect(() => {
+
+        axios.get('https://fakestoreapi.com/products').then((response) => {
+            setPosts(response.data);
+            setLoading(false)
+        }).catch((err) => console.log(err))
+
+
+    }, []);
+    // console.log("data=>", posts)
     // const changeToDetails = () => {
     //     setShowDetails(true)
     // }
@@ -27,52 +37,72 @@ const Card = ({ getindex }) => {
     // // Shorten the description to the first 100 characters
     // const shortenedDescription = description.substring(0, 100) + '...';
 
-    const cardClick = (index) => {
-        getindex(index)
-        console.log("item=>",index)
-        // console.log("index=>",index)
-        
-    }
+    // const cardClick = (index) => {
+    //     getindex(index)
+    //     console.log("item=>", index)
+    //     // console.log("index=>",index)
+
+    // }
+
     return (
-       <div>
-      {/* <Link onClick={hand} style={{textDecoration:'none', color:"black"}} to='/add-details'> */}
-          <div className='container d-flex my-5 text-center '>
-            {posts && posts.map((item, index) => (
-                
-                <Link style={{textDecoration:'none', color:"black"}}  to='/add-details' >
-                <div  key={index}  onClick={()=> cardClick(item)} className="col-12 col-md-4 col-lg-3 gy-3 card">
-                    <img src={item.image} style={{height:"150px", objectFit:"conatain", backgroundColor:'black', width:"100%" }} className="card-img-top" alt="Card-image" />
-                    <div className="card-body">
-                        <p style={{color:"red"}}>{item.id}</p>
-                        <p>{item.title.substring(0,30)}</p>
-                        <h5 className="card-title">{item.price}</h5>
-                        <p className="card-text">{item.description.substring(0, 30)}</p>
+        <>{
+            loading ? <Loading />
+                :
+                <>
+                    <div className='container'>
+                        <div className="row">
+                            {posts && posts.slice(0, card).map((item, index) => {
+                                return (
+                                    <div key={item.id} className="col-md-4 col-sm-6 col-lg-3">
+                                        <Link style={{ textDecoration: 'none', color: "black" }} to={`/product-details/${item.id}`} >
+                                            <div className="m-4 border rounded p-4">
+                                                <div className='mb-2 text-center' style={{ backroundColor: "black" }}>
+                                                    <img src={item.image} style={{ height: "150px", objectFit: "conatain", backgroundColor: 'black', width: "90%" }} className="card-img-top" alt="Card-image" />
+                                                </div>
+                                                <div className="card-body">
+                                                    {/* <p style={{ color: "red" }}>{item.id}</p> */}
+                                                    <p>{item.title.substring(0, 30)}</p>
+                                                    <h5 className="card-title">{item.price}</h5>
+                                                    <p className="card-text">{item.description.substring(0, 30)}</p>
+                                                </div>
+                                            </div>
+
+                                        </Link>
+
+                                    </div>)
+
+                            })
+                            }
+                        </div>
                     </div>
-                </div>
-                </Link>
+                    {
+                        card < posts.length ?
+                            <div className='text-center'><button style={{ backgroundColor: "#002F34", color: "#fff" }} onClick={LoadMore} className='load-more btn text-center my-5' >Load More</button> </div> : <div className='text-center'> <p className='my-5'>No More Items</p></div>
 
-            ))
-            }
-        </div>
-        {/* </Link>   */}
-        </div>
 
-       
+                    }
+                </>
+        }
 
-    
 
-            
+        </>
 
-      
-       
-    
-       
-    
-        
-        
-        
-        
-       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     )
 }
 

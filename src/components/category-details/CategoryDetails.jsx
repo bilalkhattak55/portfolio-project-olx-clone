@@ -11,43 +11,30 @@ import { useParams } from "react-router-dom";
 import Loading from '../Loading';
 
 
-const AddDetails = () => {
-  const [loading, setLoading]= useState(true)
-
-
+const CategoryDetails = () => {
+//   const [loading, setLoading]= useState(true)
   const { id } = useParams();
+  const [Productt, setProductt] = useState([]);
 
-  const [product, setProduct] = useState([])
-
-  useEffect(() => {
-
+  useEffect( () => {
     axios.get(`https://fakestoreapi.com/products/${id}`).then((res) => {
-      setProduct(res.data)
-     setLoading(false)
-      // console.log(res)
-      // console.log(item.id)
-    }).catch((err) => {
-      console.log(err);
-    })
-
-
-  }, [])
-  console.log("data===>", product)
+      setProductt(res.data)
+    // console.log("resData====.>", res)
+    //  setLoading(false)
+    }).catch((err)=> console.log(err))
+  }, [id])
+  console.log("data===>", Productt)
   return (
 
     <div className='add-details-section'>
-     
-      {/* =============================== * product img * ============================================ */}
-
-
 
       <div className="row container justify-content-center product_row d-flex flex-row p-5">
         <div className="col-12 col-sm-12 col-md-12 col-lg-6 image_discription">
 
 
           <div className="add-detail-img text-center mt-2"> 
-            { loading && <Loading /> }
-            <img src={product.image} alt='img' />
+            {/* { loading && <Loading /> } */}
+            <img src={Productt.image} alt='img' />
           </div>
 
 
@@ -56,8 +43,8 @@ const AddDetails = () => {
 
           <div className="descriptiopn">
             <h2 className='mt-2'> Descriptiopn </h2>
-            <h4> {product.title}</h4>
-            <p>{product.description} <br />
+            <h4> {Productt.title}</h4>
+            <p>{Productt.description} <br />
               MRP 3,500</p>
           </div>
         </div>
@@ -66,7 +53,7 @@ const AddDetails = () => {
           <div className="box">
             <div className="price">
       
-              <h3><span className='fs-5'>Rs:</span>{ " "+product.price}</h3>
+              <h3><span className='fs-5'>Rs:</span>{ " " + Productt.price}</h3>
             </div>
 
             <span> Mi TV Stick </span>
@@ -102,4 +89,4 @@ const AddDetails = () => {
   )
 }
 
-export default AddDetails;
+export default CategoryDetails;

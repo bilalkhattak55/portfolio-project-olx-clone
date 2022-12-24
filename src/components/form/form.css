@@ -64,3 +64,13 @@ ion-icon {
     margin: 10px auto;
     color: #002F34;
 }
+
+.form-nav {
+    height: 77px;
+
+}
+.form-nav-olxlogo {
+    position: relative;
+    bottom: 18px;
+    width: 60px;
+}

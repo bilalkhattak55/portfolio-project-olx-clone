@@ -12,10 +12,8 @@
   object-fit: cover;
 
 }
-.container{
-    width: 90vw;
-    display: flex;
-    flex-wrap: wrap;
+.container-card{
+   
 }
 .card-title {
   color: black;
