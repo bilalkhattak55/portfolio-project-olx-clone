@@ -1,7 +1,7 @@
 *{
-    box-sizing: border-box;
-    margin: 0%;
-    padding: 0%;
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
     
 }
 body{
@@ -15,7 +15,7 @@ body{
 }
 
 .logo-search {
-    min-width: 370px;
+    min-width: 373px;
 }
 .form-control{
     border: 2px solid black;
@@ -29,13 +29,13 @@ body{
        text-align:center;
     }
     .span1{
-      margin-right: 20px;
+      margin-right: 23px;
     }
     
 }
 @media (max-width:768px) {
    .example{
-    margin-left: 10px;
+    margin-left: 11px;
     margin-top: 5px;
    }
 }

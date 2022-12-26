@@ -49,17 +49,18 @@ const Card = () => {
             loading ? <Loading />
                 :
                 <>
+
                     <div className='container'>
                         <div className="row">
                             {posts && posts.slice(0, card).map((item, index) => {
                                 return (
                                     <div key={item.id} className="col-md-4 col-sm-6 col-lg-3">
                                         <Link style={{ textDecoration: 'none', color: "black" }} to={`/product-details/${item.id}`} >
-                                            <div className="m-4 border rounded p-4">
-                                                <div className='mb-2 text-center' style={{ backroundColor: "black" }}>
-                                                    <img src={item.image} style={{ height: "150px", objectFit: "conatain", backgroundColor: 'black', width: "90%" }} className="card-img-top" alt="Card-image" />
+                                            <div className="m-4 border rounded">
+                                                <div className='mb-2 text-center' style={{ backgroundColor: "black", width:"100%"}}>
+                                                    <img src={item.image} style={{ height: "100px" , objectFit: "contain", backgroundColor: 'black', width: "90%" }} className="card-img-top" alt="Card-image" />
                                                 </div>
-                                                <div className="card-body">
+                                                <div className="card-body p-4">
                                                     {/* <p style={{ color: "red" }}>{item.id}</p> */}
                                                     <p>{item.title.substring(0, 30)}</p>
                                                     <h5 className="card-title">{item.price}</h5>

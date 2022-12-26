@@ -1,9 +1,43 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import "../auth/auth.css";
 import olxpng from "../images/olx.png";
+import { Link } from 'react-router-dom';
 
 
-const Signin = () => {
+const Signin = ({token, setToken}) => {
+
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  //login
+  const loginHandler =()=> {
+    setUserName('');
+    setPassword('');
+    setError('')
+    axios({
+      url:"https://fakestoreapi.com/auth/login",
+      method:"POST",
+      data : {
+        username : userName,
+        password: password,
+      }
+    }).then((res)=>{
+     console.log(res.data.token)
+    setToken(res.data.token)
+    localStorage.setItem('userToken', res.data.token)
+    })
+    .catch((err) => {
+    console.log(err.response)
+    setError(err.response.data)
+  })
+  
+  }
+
+
+
+  //changing in singup and singin
   const [isSignup, setIsSignup] = useState(true)
   const submit = (e) => {
     e.preventDefault();
@@ -24,11 +58,11 @@ const Signin = () => {
               </div>
             }
             <div className="form-floating">
-              <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
+              <input onChange={(e)=> setUserName(e.target.value)} type="text" className="form-control" id="floatingInput" placeholder="name@example.com" />
               <label htmlFor="floatingInput">Email address</label>
             </div>
             <div className="form-floating mt-2">
-              <input type="password" className="form-control" id="floatingPassword" placeholder="Password" />
+              <input onChange={(e)=> setPassword(e.target.value)} type="password" className="form-control" id="floatingPassword" placeholder="Password" />
               <label htmlFor="floatingPassword">Password</label>
             </div>
             <div className="checkbox mb-3">
@@ -36,7 +70,10 @@ const Signin = () => {
                 <input type="checkbox" defaultValue="remember-me" /> Remember me
               </label>
             </div>
-            <button className="w-100 btn btn-lg btn-primary mb-2" type="submit">{isSignup ? "Sign up" : "login"}</button>
+            {
+              error && <small>{error}</small>
+            }
+            <Link to='/'><button onClick={loginHandler} className="w-100 btn btn-lg btn-primary mb-2" type="submit">{isSignup ? "Sign up" : "login"}</button></Link>
             <button className="w-100 btn btn-lg btn-dark" onClick={() => setIsSignup(!isSignup)}>{isSignup ? "login" : "Create account"}</button>
 
           </form>

@@ -1,4 +1,4 @@
-import React,{useSta} from 'react';
+import React,{useState} from 'react';
 import Header from '../components/header/Header';
 import HeaderNav from '../components/headerNav/HeaderNav';
 import Advert from '../components/advertisement/Advert';
@@ -12,7 +12,7 @@ import Footer from '../components/footer/Footer';
 // import { useState } from 'react';
 // import {Routes, Route} from "react-router-dom";
 
-function Home() {
+function Home({token, setToken}) {
     
     // const [index, setIndex] = useState("");
         // const [show, setShow] = useState(false);
@@ -33,7 +33,7 @@ function Home() {
 
     return (
         <div>
-         <Header />
+         <Header token={token} setToken={setToken} />
          <HeaderNav />
         <Carousel />
         <Card  />                    
