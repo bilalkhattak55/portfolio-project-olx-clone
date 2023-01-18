@@ -3,18 +3,40 @@ import axios from 'axios';
 import Productt from '../../images/product-12.jpg'
 import { Link } from 'react-router-dom';
 import "../categories/category.css"
+import VisibilityIcon from '../../images/vsblty.svg';
+import VisibilityIconn from '../../images/vsblty1.svg';
 
 const CategoryJewellary = () => {
     const [dataa, setDataa] = useState([]);
+    const [active, setActive] = useState(false)
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         axios.get("https://fakestoreapi.com/products/category/jewelery")
             .then((res) => {
+                setLoading(false)
                 // console.log("resData=>", res.data)
                 setDataa(res.data)
             })
             .catch((err) => console.log(err))
     }, [])
+   
+
+    const viewChangeLarge = () => {
+        //     const bigOne = document.querySelector('.bigOne').classList.remove("jewellary-cardd")
+        //     bigOne.map((itm)=> {
+        //         return (
+        //             itm.classList.add('jewellary-cardd-big')
+        //         )
+        //     })
+
+        setActive(true)
+
+    }
+
+    const viewChangeSmall = () => {
+        setActive(false)
+    }
 
     console.log("dataaa=>>>>", dataa)
     return (
@@ -23,7 +45,7 @@ const CategoryJewellary = () => {
 
                 <div className="side-menu col-12 col-md-4">
                     <h2 className='mt-4'>Jewellaries in karachi, pakistan</h2>
-                    <hr className='mt-5'/>
+                    <hr className='mt-5' />
                     <h2>Filter</h2>
                     <hr />
                     <h2>Categories</h2>
@@ -102,7 +124,19 @@ const CategoryJewellary = () => {
 
                     <span className='d-flex jewellary-span'>
                         <p className='ms-2'>Only photoes /</p>
-                        <h2 className='ms-3'> View</h2>
+                        <h2 className='ms-3 me-2'> View</h2>
+                        {
+                            active === true
+                                ?
+                                <img width={35} onClick={viewChangeSmall} src={VisibilityIconn} alt="icon" />
+                                :
+                                <img width={35} onClick={viewChangeLarge} src={VisibilityIcon} alt="icon" />
+
+                        }
+
+
+                        {/* <button onClick={viewChange}>viewChange</button> */}
+                        {/* <button onClick={()=> setActive('itt')} >viewChange</button> */}
                         <h2 className='ms-4'>Sort by</h2>
 
                     </span>
@@ -112,18 +146,22 @@ const CategoryJewellary = () => {
                             {dataa.map((itemm, index) => {
                                 return (
                                     <div key={itemm.id} className="col-12">
-                                        <Link style={{ textDecoration: 'none', color: "black" }}  to={`/category-details/${itemm.id}`} >
-                                            <div className="m-4 border rounded p-4 d-flex">
-                                                <div className='mb-2 text-center jewellary-img-div'>
-                                                    <img src={itemm.image} style={{ height: "100px", objectFit: "conatain", backgroundColor: 'black', width: "100px" }} className="card-img-top" alt="Card-image" />
+                                        <Link style={{ textDecoration: 'none', color: "black" }} to={`/category-details/${itemm.id}`} >
+                                            <div className={`m-4 border rounded bigOne ${active === true ? 'jewellary-cardd-big' : 'jewellary-cardd'} `}>
+                                                {/* <div className={`m-4 border rounded bigOne ${ active === itt ? 'jewellary-cardd-big' : 'jewellary-cardd' }`}> */}
+
+                                                <div style={{ backgroundColor: 'black', display: "flex", alignItems: 'center', justifyContent: 'center' }} className={`text-center ${active === true ? 'jewellary-img-div-big' : 'jewellary-img-div'}`}>
+                                                    {/* <img src={itemm.image}className="card-img-top big jewellary-img" alt="Card-image" /> */}
+                                                    <img src={itemm.image} className={`card-img-top big ${active == true ? 'jewellary-img-big' : 'jewellary-img'}  `} alt="Card-image" />
                                                 </div>
-                                                <div className="ms-5 card-body">
-                                                    
+
+                                                <div className="ms-3 card-body p-4">
                                                     {/* <p style={{ color: "red" }}>{item.id}</p> */}
                                                     <p>{itemm.title.substring(0, 30)}</p>
                                                     <h5 className="card-title">{itemm.price}</h5>
                                                     <p className="card-text">{itemm.description.substring(0, 30)}</p>
                                                 </div>
+
                                             </div>
 
                                         </Link>

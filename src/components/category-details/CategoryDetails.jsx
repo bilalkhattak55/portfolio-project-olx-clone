@@ -37,10 +37,6 @@ const CategoryDetails = () => {
             <img src={Productt.image} alt='img' />
           </div>
 
-
-
-
-
           <div className="descriptiopn">
             <h2 className='mt-2'> Descriptiopn </h2>
             <h4> {Productt.title}</h4>

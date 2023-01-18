@@ -51,10 +51,32 @@ main {
   }
 
   /* /////////////// */
+  .jewellary-span {
+    margin-top: 60px !important;
+  }
 
   .jewellary-img-div {
     width: 200px !important;
   }
-  .jewellary-span {
-    margin-top: 60px !important;
+
+  .jewellary-img {
+    height: 122px;
+    object-fit: "conatain";
+    width: 70%;
+  }
+
+  .jewellary-img-div-big{
+width: 100%;
+  }
+
+  .jewellary-img-big {
+   width: 40%;
+   height: 200px;
+  }
+  .jewellary-cardd{
+    display: flex;
+  }
+  .jewellary-cardd-big{
+    display: flex;
+    flex-direction: column;
   }

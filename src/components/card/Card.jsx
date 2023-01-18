@@ -12,6 +12,7 @@ const Card = () => {
     const [loading, setLoading] = useState(true)
     const startingVallue = 8;
     const [card, setCards] = useState(startingVallue);
+    // const [query, setQuery] = useState('desc')
 
     const LoadMore = () => {
         setCards(card + startingVallue)
@@ -20,6 +21,7 @@ const Card = () => {
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
+
 
         axios.get('https://fakestoreapi.com/products').then((response) => {
             setPosts(response.data);
@@ -54,17 +56,17 @@ const Card = () => {
                         <div className="row">
                             {posts && posts.slice(0, card).map((item, index) => {
                                 return (
-                                    <div key={item.id} className="col-md-4 col-sm-6 col-lg-3">
+                                    <div key={item.id} className="col-md-4 col-sm-6 col-lg-3 main-cardd">
                                         <Link style={{ textDecoration: 'none', color: "black" }} to={`/product-details/${item.id}`} >
                                             <div className="m-4 border rounded">
                                                 <div className='mb-2 text-center' style={{ backgroundColor: "black", width:"100%"}}>
                                                     <img src={item.image} style={{ height: "100px" , objectFit: "contain", backgroundColor: 'black', width: "90%" }} className="card-img-top" alt="Card-image" />
                                                 </div>
-                                                <div className="card-body p-4">
+                                                <div className="card-body pt-2 pb-1  px-4">
                                                     {/* <p style={{ color: "red" }}>{item.id}</p> */}
-                                                    <p>{item.title.substring(0, 30)}</p>
-                                                    <h5 className="card-title">{item.price}</h5>
-                                                    <p className="card-text">{item.description.substring(0, 30)}</p>
+                                                    <p>{item.title.substring(0, 20)}</p>
+                                                    <h5 className="card-title pb-1">{item.price}</h5>
+                                                    <p className="card-text">{item.description.substring(0, 35)}</p>
                                                 </div>
                                             </div>
 

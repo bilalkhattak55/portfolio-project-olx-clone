@@ -18,6 +18,19 @@
 .card-title {
   color: black;
 }
+.main-cardd:hover {
+  transform: scale(1.1);
+  transition: .5s;
+  
+  
+}
+.main-cardd:hover p {
+  color: rgb(48, 48, 48);
+}
+.main-cardd:hover h5 {
+  font-weight: bold;
+  transition: 0.5s;
+}
 
 
 

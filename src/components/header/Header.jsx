@@ -3,7 +3,7 @@ import "./header.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import olxPng from "../../images/olx.png";
-import {ReactComponent as Car} from "../../images/Car.svg"    // Car.svg  Property.svg
+import {ReactComponent as Car} from "../../images/Car.svg";    // Car.svg  Property.svg
 import {ReactComponent as Property} from "../../images/Property.svg";
 
 
@@ -14,8 +14,10 @@ function Header({token, setToken}) {
     // const [token, setToken] = useState(localStorage.getItem('userToken') ?? null)
 
     const logOut =()=> {
+
         setToken("");
         localStorage.clear();
+
     }
     
 
