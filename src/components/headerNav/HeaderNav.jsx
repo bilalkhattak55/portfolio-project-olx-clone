@@ -75,23 +75,23 @@ function HeaderNav() {
                 <Link className="nav-link" to="/categories-jewellary">Jewellary</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Cars</a>
+                <a className="nav-link disabled" href="#">Cars</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">MotorCycles</a>
+                <a className="nav-link disabled" href="#">MotorCycles</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">TV-Video-Audio</a>
+                <a className="nav-link disabled" href="#">TV-Video-Audio</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Tablets</a>
+                <a className="nav-link disabled" href="#">Tablets</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Plots</a>
+                <a className="nav-link disabled" href="#">Plots</a>
               </li>
               
               <li className="nav-item">
-                <a className="nav-link" href="#">Houses</a>
+                <a className="nav-link disabled" href="#">Houses</a>
               </li>
             </ul>
           </div>

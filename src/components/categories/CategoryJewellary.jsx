@@ -24,6 +24,7 @@ const CategoryJewellary = () => {
 
     const viewChangeLarge = () => {
         //     const bigOne = document.querySelector('.bigOne').classList.remove("jewellary-cardd")
+        //      bigOne.classList.add('jewellary-cardd-big');
         //     bigOne.map((itm)=> {
         //         return (
         //             itm.classList.add('jewellary-cardd-big')
@@ -121,7 +122,6 @@ const CategoryJewellary = () => {
                 {/* //////// */}
 
                 <div className="jewellary-card col-12 col-md-8">
-
                     <span className='d-flex jewellary-span'>
                         <p className='ms-2'>Only photoes /</p>
                         <h2 className='ms-3 me-2'> View</h2>
@@ -147,6 +147,11 @@ const CategoryJewellary = () => {
                                 return (
                                     <div key={itemm.id} className="col-12">
                                         <Link style={{ textDecoration: 'none', color: "black" }} to={`/category-details/${itemm.id}`} >
+                                           {/* {(cond)?<>   </>:null}
+
+                                           {(!cond)?<>   </>:null} */}
+                                           
+                                           
                                             <div className={`m-4 border rounded bigOne ${active === true ? 'jewellary-cardd-big' : 'jewellary-cardd'} `}>
                                                 {/* <div className={`m-4 border rounded bigOne ${ active === itt ? 'jewellary-cardd-big' : 'jewellary-cardd' }`}> */}
 

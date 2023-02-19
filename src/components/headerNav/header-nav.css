@@ -27,10 +27,6 @@
 }
 .nav-link:hover {
    color: #23BD9F;
-   
-   font-weight: bold;
 }
-.nav-item:hover {
-   padding: 0px;
-}
+
 
